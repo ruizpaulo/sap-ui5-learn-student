@@ -14,8 +14,8 @@
 			"version": "0.0.0"
 		},
 		"dataSources": {
-			"ZT32_76_OVLY_APP_SRV": {
-				"uri": "/sap/opu/odata/sap/ZT32_76_OVLY_APP_SRV/",
+			"ZT32_76_STUDENT_SRV": {
+				"uri": "/sap/opu/odata/sap/ZT32_76_STUDENT_SRV/",
 				"type": "OData",
 				"settings": {
 					"localUri": "localService/metadata.xml"
@@ -74,7 +74,7 @@
 					"defaultCountMode": "Request",
 					"useBatch": false
 				},
-				"dataSource": "ZT32_76_OVLY_APP_SRV",
+				"dataSource": "ZT32_76_STUDENT_SRV",
 				"preload": true
 			}
 		},
