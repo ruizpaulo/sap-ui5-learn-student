@@ -1,0 +1,46 @@
+@AbapCatalog.sqlViewName: 'ZT32_76_STDNT_S'
+@AbapCatalog.compiler.compareFilter: true
+@AbapCatalog.preserveKey: true
+@OData.publish: true
+@AccessControl.authorizationCheck: #CHECK
+@EndUserText.label: 'Read Student x Skills'
+define view ZT32_76_STUDENT_CDS as select from zstudents as std
+      
+      left outer join usr21 as user_created
+        on std.created_by = user_created.bname
+
+      left outer join adrp as person_created
+        on user_created.persnumber = person_created.persnumber
+        and person_created.date_from = '00010101'
+        and person_created.nation = ''
+
+      left outer  join usr21 as user_changed
+        on std.changed_by = user_changed.bname
+
+      left outer join adrp as person_changed
+        on user_changed.persnumber = person_changed.persnumber
+        and person_changed.date_from = '00010101'
+        and person_changed.nation = ''
+        
+        
+association [1..*] to zstudents_skills as _skl
+    on $projection.id = _skl.student 
+    {
+    key std.id,
+        std.birth_date,
+        std.changed_at,
+        std.changed_by,
+        std.created_by,
+        std.created_on,
+        std.created_at,
+        std.first_name,
+        std.invalid,
+        std.last_name,
+        std.user_name,
+        person_created.name_text as created_by_name,
+        person_changed.name_text as changed_by_name,
+        _skl as ToSkills
+    }
+    where
+        std.created_by = $session.user and
+        std.invalid <> 'X';
