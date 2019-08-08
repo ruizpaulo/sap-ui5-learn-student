@@ -1,7 +1,7 @@
 /*global QUnit*/
 
 sap.ui.define([
-	"ovly/cadastro_alunos76/controller/View1.controller"
+	"pruiz/student_76/controller/View1.controller"
 ], function (Controller) {
 	"use strict";
 

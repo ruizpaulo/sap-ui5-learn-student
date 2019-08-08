@@ -1,7 +1,7 @@
 {
 	"_version": "1.12.0",
 	"sap.app": {
-		"id": "ovly.cadastro_alunos76",
+		"id": "pruiz.student_76",
 		"type": "application",
 		"i18n": "i18n/i18n.properties",
 		"applicationVersion": {
@@ -14,8 +14,8 @@
 			"version": "0.0.0"
 		},
 		"dataSources": {
-			"ZT32_76_OVLY_APP_SRV": {
-				"uri": "/sap/opu/odata/sap/ZT32_76_OVLY_APP_SRV/",
+			"ZT32_76_STUDENT_SRV": {
+				"uri": "/sap/opu/odata/sap/ZT32_76_STUDENT_SRV/",
 				"type": "OData",
 				"settings": {
 					"localUri": "localService/metadata.xml"
@@ -42,7 +42,7 @@
 	"sap.ui5": {
 		"flexEnabled": false,
 		"rootView": {
-			"viewName": "ovly.cadastro_alunos76.view.View1",
+			"viewName": "pruiz.student_76.view.View1",
 			"type": "XML",
 			"async": true,
 			"id": "View1"
@@ -63,7 +63,7 @@
 			"i18n": {
 				"type": "sap.ui.model.resource.ResourceModel",
 				"settings": {
-					"bundleName": "ovly.cadastro_alunos76.i18n.i18n"
+					"bundleName": "pruiz.student_76.i18n.i18n"
 				}
 			},
 			"": {
@@ -74,7 +74,7 @@
 					"defaultCountMode": "Request",
 					"useBatch": false
 				},
-				"dataSource": "ZT32_76_OVLY_APP_SRV",
+				"dataSource": "ZT32_76_STUDENT_SRV",
 				"preload": true
 			}
 		},
@@ -90,7 +90,7 @@
 				"routerClass": "sap.m.routing.Router",
 				"viewType": "XML",
 				"async": true,
-				"viewPath": "ovly.cadastro_alunos76.view",
+				"viewPath": "pruiz.student_76.view",
 				"controlAggregation": "pages",
 				"controlId": "app",
 				"clearControlAggregation": false
@@ -116,7 +116,7 @@
 		}
 	},
 	"sap.platform.abap": {
-		"uri": "/sap/bc/ui5_ui5/sap/zt32_76_ovlyapp/webapp",
+		"uri": "/sap/bc/ui5_ui5/sap/zt32_76_student/webapp",
 		"_version": "1.1.0"
 	},
 	"sap.platform.hcp": {

@@ -3,7 +3,7 @@ sap.ui.define([
 ], function (Opa5) {
 	"use strict";
 
-	return Opa5.extend("ovly.cadastro_alunos76.test.integration.arrangements.Startup", {
+	return Opa5.extend("pruiz.student_76.test.integration.arrangements.Startup", {
 
 		iStartMyApp: function (oOptionsParameter) {
 			var oOptions = oOptionsParameter || {};
@@ -14,7 +14,7 @@ sap.ui.define([
 			// start the app UI component
 			this.iStartMyUIComponent({
 				componentConfig: {
-					name: "ovly.cadastro_alunos76",
+					name: "pruiz.student_76",
 					async: true
 				},
 				hash: oOptions.hash,

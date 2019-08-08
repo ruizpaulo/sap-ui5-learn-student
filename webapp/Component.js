@@ -1,11 +1,11 @@
 sap.ui.define([
 	"sap/ui/core/UIComponent",
 	"sap/ui/Device",
-	"ovly/cadastro_alunos76/model/models"
+	"pruiz/student_76/model/models"
 ], function (UIComponent, Device, models) {
 	"use strict";
 
-	return UIComponent.extend("ovly.cadastro_alunos76.Component", {
+	return UIComponent.extend("pruiz.student_76.Component", {
 
 		metadata: {
 			manifest: "json"

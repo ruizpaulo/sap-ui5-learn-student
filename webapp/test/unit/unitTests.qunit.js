@@ -5,7 +5,7 @@ sap.ui.getCore().attachInit(function () {
 	"use strict";
 
 	sap.ui.require([
-		"ovly/cadastro_alunos76/test/unit/AllTests"
+		"pruiz/student_76/test/unit/AllTests"
 	], function () {
 		QUnit.start();
 	});

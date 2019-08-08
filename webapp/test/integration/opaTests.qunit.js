@@ -5,7 +5,7 @@ sap.ui.getCore().attachInit(function () {
 	"use strict";
 
 	sap.ui.require([
-		"ovly/cadastro_alunos76/test/integration/AllJourneys"
+		"pruiz/student_76/test/integration/AllJourneys"
 	], function () {
 		QUnit.start();
 	});

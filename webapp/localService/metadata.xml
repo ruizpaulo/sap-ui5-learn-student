@@ -1,7 +1,8 @@
-<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
-	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
 	<edmx:DataServices m:DataServiceVersion="2.0">
-		<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZT32_76_OVLY_APP_SRV" xml:lang="en" sap:schema-version="1">
+		<Schema Namespace="ZT32_76_STUDENT_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
 			<EntityType Name="Student" sap:content-version="1">
 				<Key><PropertyRef Name="Id"/></Key><Property Name="Id" Type="Edm.String" Nullable="false" MaxLength="32" sap:unicode="false" sap:label="Student ID" sap:creatable="false"
 					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="FirstName" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="First name"
@@ -15,13 +16,32 @@
 					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ChangedAt" Type="Edm.DateTime" Precision="0" sap:unicode="false" sap:label="Time Stamp" sap:creatable="false"
 					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ChangedBy" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Changed by"
 					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ChangedByName" Type="Edm.String" Nullable="false" MaxLength="80" sap:unicode="false" sap:label="Full Name"
-					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><NavigationProperty Name="ToStudentSkills" Relationship="ZT32_76_STUDENT_SRV.Student_StudentSkill" FromRole="FromRole_Student_StudentSkill"
+					ToRole="ToRole_Student_StudentSkill"/></EntityType>
 			<EntityType Name="Skill" sap:content-version="1">
 				<Key><PropertyRef Name="Id"/></Key><Property Name="Id" Type="Edm.Byte" Nullable="false" sap:unicode="false" sap:label="Skill" sap:creatable="false" sap:updatable="false"
 					sap:sortable="false" sap:filterable="false"/><Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:label="Skill Name" sap:creatable="false"
 					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
-			<EntityContainer Name="ZT32_76_OVLY_APP_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx"><EntitySet Name="Students" EntityType="ZT32_76_OVLY_APP_SRV.Student" sap:creatable="false" sap:updatable="false" sap:deletable="false"
-				sap:pageable="false" sap:content-version="1"/><EntitySet Name="Skills" EntityType="ZT32_76_OVLY_APP_SRV.Skill" sap:creatable="false" sap:updatable="false" sap:deletable="false"
-				sap:pageable="false" sap:content-version="1"/></EntityContainer><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/ZT32_76_OVLY_APP_SRV/$metadata"/><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/ZT32_76_OVLY_APP_SRV/$metadata"/></Schema>
+			<EntityType Name="StudentSkill" sap:content-version="1">
+				<Key><PropertyRef Name="Student"/><PropertyRef Name="Skill"/></Key><Property Name="Student" Type="Edm.String" Nullable="false" MaxLength="32" sap:unicode="false" sap:label="Student ID" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Skill" Type="Edm.Byte" Nullable="false" sap:unicode="false" sap:label="Skill" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<Association Name="Student_StudentSkill" sap:content-version="1"><End Type="ZT32_76_STUDENT_SRV.Student" Multiplicity="1" Role="FromRole_Student_StudentSkill"/><End Type="ZT32_76_STUDENT_SRV.StudentSkill" Multiplicity="*" Role="ToRole_Student_StudentSkill"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_Student_StudentSkill"><PropertyRef Name="Id"/></Principal>
+					<Dependent Role="ToRole_Student_StudentSkill"><PropertyRef Name="Student"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<EntityContainer Name="ZT32_76_STUDENT_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx"><EntitySet Name="Students" EntityType="ZT32_76_STUDENT_SRV.Student" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:content-version="1"/><EntitySet Name="Skills" EntityType="ZT32_76_STUDENT_SRV.Skill" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:content-version="1"/><EntitySet Name="StudentSkills" EntityType="ZT32_76_STUDENT_SRV.StudentSkill" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+				<AssociationSet Name="Student_StudentSkillSet" Association="ZT32_76_STUDENT_SRV.Student_StudentSkill" sap:creatable="false"
+					sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="Students" Role="FromRole_Student_StudentSkill"/><End EntitySet="StudentSkills" Role="ToRole_Student_StudentSkill"/></AssociationSet>
+			</EntityContainer><atom:link rel="self"
+				href="https://webidecp-p1942677024trial.dispatcher.hanatrial.ondemand.com/destinations/SAP_GATEWAY/sap/opu/odata/sap/ZT32_76_STUDENT_SRV/$metadata"
+				xmlns:atom="http://www.w3.org/2005/Atom"/><atom:link rel="latest-version"
+				href="https://webidecp-p1942677024trial.dispatcher.hanatrial.ondemand.com/destinations/SAP_GATEWAY/sap/opu/odata/sap/ZT32_76_STUDENT_SRV/$metadata"
+				xmlns:atom="http://www.w3.org/2005/Atom"/></Schema>
 	</edmx:DataServices>
 </edmx:Edmx>

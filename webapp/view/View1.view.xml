@@ -1,46 +1,57 @@
-<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:ndc="sap.ndc" xmlns:core="sap.ui.core" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:camera="sap.ndc" xmlns:form="sap.ui.layout.form" xmlns="sap.m" controllerName="ovly.cadastro_alunos76.controller.View1" displayBlock="true">
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:ndc="sap.ndc" xmlns:core="sap.ui.core" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:camera="sap.ndc" xmlns:form="sap.ui.layout.form" xmlns="sap.m" controllerName="pruiz.student_76.controller.View1" displayBlock="true">
 	<Shell id="shell">
 		<App id="app">
 			<pages>
 				<Page id="page" title="{i18n>title}">
 					<content>
-						<!--<VBox>-->
-						<!--	<items>-->
-						<!--<html:h1>Ola Mundo</html:h1>-->
-						<!--		<camera:BarcodeScannerButton />-->
-						<!--		<RatingIndicator />-->
-						<!--		<RatingIndicator></RatingIndicator>-->
-						<!--		<Input   value="Fabio" type="Text"  />-->
-						<!--	</items>-->
-						<!--</VBox>-->
 						<form:SimpleForm title="{i18n>titleForm}">
 							<form:content>
 								<core:Title text="{i18n>subTitleForm}"/>
 								<Label text="Nome"/>
 								<Input placeholder="Primeiro Nome" value="{oModelJsonAluno>/dados/nome}" id="input_first_name"/>
 								<Input placeholder="Sobrenome" value="{path: 'oModelJsonAluno>/dados/sobreNome'}" id="input_last_name" />
-								<Label text="Competência"/>
-								<Select items="{path: '/Skills', sorter: {path: 'Name'}}">
-									<core:Item key="{Id}" text="{Id} - {Name}"/>
-								</Select>
+								<Label text="Data de Nascimento" labelFor="dpNascimento"/>
+								<DatePicker
+									id="dpNascimento"
+									placeholder="Entre com a data"
+									change="handleChange"
+									value="{path:'oModelJsonAluno>/dados/nascimento', type:'sap.ui.model.type.Date', pattern:'dd/MM/yyyy', source:{ pattern: 'yyyy-MM-ddTHHmmss'}}"
+									valueFormat="dd/MM/yyyy"
+									displayFormat="long"
+									class="sapUiSmallMarginBottom"/>
+								<core:Title text="{i18n>skillTitle}"/>
+								<Label text="Habilidades"/>
+								<MultiComboBox
+									id="cmbSkills"
+									selectionChange="handleSelectionChange"
+									selectionFinish="handleSelectionFinish"
+									items="{path: '/Skills', sorter: { path: 'Name' }}">
+									<core:Item key="{Id}" text="{Name}"/>
+								</MultiComboBox>
 								
 							</form:content>
 						</form:SimpleForm>
-						<List noDataText="{i18n>noDataText}" id="lstAluno" itemPress="selecionaAluno" items="{/Students}" mode="SingleSelect">
+						<List noDataText="{i18n>noDataText}" id="lstAluno" itemPress="selecionaAluno" selectionChange="selecionaAluno" items="{/Students}" mode="SingleSelect">
 							<items>
-								<StandardListItem title="{FirstName} {LastName}" description="{i18n>birthText} {BirthDate}" icon="sap-icon://person-placeholder" type="Active"/>
+								<StandardListItem 
+									title="{FirstName} {LastName}" 
+									description="{i18n>birthText} {path: 'BirthDate',formatter: '.formatDateDisplay'}" 
+									
+									icon="sap-icon://person-placeholder" type="Active"/>
 							</items>
 						</List>
 						
 					</content>
 					<footer>
 						<Bar>
-						<contentRight>
-							
-							<Button text="Excluir" id="btnDeletar" icon="sap-icon://delete" type="Reject" press="excluirAluno"/>
-						</contentRight>
+							<contentRight>
+								<Button text="Criar Novo" id="btnCriar" icon="sap-icon://add-employee" type="Transparent" press="inserirAluno"/>
+							</contentRight>
+							<contentMiddle>
+								<Button text="Alterar" id="btnAlterar" icon="sap-icon://user-edit" type="Emphasized" press="alterarAluno"/>
+							</contentMiddle>
 							<contentLeft>
-							<Button text="Criar" id="btnCriar" icon="sap-icon://save" type="Transparent" press="inserirAluno"/>	
+							<Button text="Deletar" id="btnDeletar" icon="sap-icon://delete" type="Reject" press="excluirAluno"/>	
 							</contentLeft>
 						</Bar>
 					</footer>

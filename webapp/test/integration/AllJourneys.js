@@ -7,7 +7,7 @@ sap.ui.define([
 
 	Opa5.extendConfig({
 		arrangements: new Startup(),
-		viewNamespace: "ovly.cadastro_alunos76.view.",
+		viewNamespace: "pruiz.student_76.view.",
 		autoWait: true
 	});
 });

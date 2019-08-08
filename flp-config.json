@@ -1,36 +1,35 @@
 {
     "application": {
         "id": "",
-        "title": "ovly.cadastro_alunos76.cadastro_alunos",
-        "description": "Cadastro de Alunos",
+        "title": "pruiz.student_76.cadastro_alunos",
+        "description": "Cadastro de Aluno",
         "type": "SAP_UI5_Component",
         "componentUrl": "/",
-        "appUrl": "#alunos-gerenciar",
-        "navigationComponentName": "ovly.cadastro_alunos76",
-        "intentSemanticObject": "alunos",
-        "intentAction": "gerenciar",
-        "html5ApplicationName": "cadastroalunos",
+        "appUrl": "#student_skills-Display",
+        "navigationComponentName": "pruiz.student_76",
+        "intentSemanticObject": "student_skills",
+        "intentAction": "Display",
+        "html5ApplicationName": "student",
         "HCPParentApplicationName": ""
     },
     "assignment": {
         "groups": [
-            "c8d5975b-a9e4-40ee-9746-4c5246a19f57-1564947625267"
+            "009fa67f-1421-483d-8af7-58ebbb49e919-1565213410038"
         ],
         "contentPackages": [
-            "fbe7fec1-3f9c-416e-a6d4-658e1f0375ee-1564947611207"
+            "980ca9d7-903f-4df5-b3c2-23443cbbdafa-1565213359456"
         ],
         "categories": []
     },
     "tile": {
         "type": "DynamicTile",
-        "title": "Cadastro de Alunos - SAP Portal",
-        "subtitle": "Alunos da Ovly",
-        "searchKeywords": "Cadastro de Alunos - SAP Portal,Alunos da Ovly",
-        "displayIconUrl": "sap-icon://activity-individual",
+        "title": "Student",
+        "subtitle": "Cadastro de Alunos",
+        "searchKeywords": "Student,Cadastro de Alunos",
+        "displayIconUrl": "sap-icon://study-leave",
         "displayInfoText": "",
         "size": "1x1",
-        "serviceURL": "/sap/fiori/cadastroalunos/sap/opu/odata/sap/ZT32_76_OVLY_APP_SRV/Students/$count",
-        "refreshInterval": 10,
-        "displayNumberUnit": "Alunos"
+        "serviceURL": "/sap/fiori/student/sap/opu/odata/sap/ZT32_76_STUDENT_SRV/Students/$count",
+        "refreshInterval": 10
     }
 }
