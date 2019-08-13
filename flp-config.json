@@ -29,7 +29,13 @@
         "displayIconUrl": "sap-icon://study-leave",
         "displayInfoText": "",
         "size": "1x1",
+<<<<<<< HEAD
         "serviceURL": "/sap/fiori/student/sap/opu/odata/sap/ZT32_76_STUDENT_SRV/Students/$count",
         "refreshInterval": 10
+=======
+        "serviceURL": "/sap/fiori/cadastroalunos/sap/opu/odata/sap/ZT32_76_STUDENT_SRV/Students/$count",
+        "refreshInterval": 10,
+        "displayNumberUnit": "Alunos"
+>>>>>>> refs/heads/master
     }
 }
