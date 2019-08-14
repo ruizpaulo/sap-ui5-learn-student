@@ -1,12 +1,11 @@
-# sap-ui5-learn-student
+# SAPUI5 - Concepts Learning Application
 This is a sample sap ui5 application
 
-
-This application is basead on an excercise from Fiori Fullstack course.
+This application is based on an excercise from Fiori Fullstack Training by Ovly.
 
 ###### Principal Features
 
-1. OData Services
+1. OData Services (ABAP)
    - CRUDQ
      - Entity Type
      - Entity Set
@@ -15,14 +14,19 @@ This application is basead on an excercise from Fiori Fullstack course.
    - CDS view to querys Student Set and Skills
 2. UI5
    - Controls  
-     - input 
-     - list 
-     - datepicker 
-     - button 
+     - Input 
+     - List
+     - DatePicker 
+     - Button 
+     - SearchField
    - Controller 
      - Eventhandler
      - JSONModel
      - ODataModel
      - Format Dates
+     - SelectedKeys
      - CallBack
-
+     - BusyDialog
+     - MessageBox
+     - MessageToast
+     - Search ( with multiple filter )
