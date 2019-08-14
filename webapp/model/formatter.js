@@ -2,7 +2,7 @@ sap.ui.define([], function () {
 	"use strict";
 
 	return {
-		formatDate: function (sValue) {
+		formataData: function (sValue) {
 			if (!sValue) {
 				return null;
 			}

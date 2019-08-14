@@ -9,35 +9,22 @@
 								<core:Title text="{i18n>subTitleForm}"/>
 								<Label text="Nome"/>
 								<Input placeholder="Primeiro Nome" value="{oModelJsonAluno>/dados/nome}" id="input_first_name"/>
-								<Input placeholder="Sobrenome" value="{path: 'oModelJsonAluno>/dados/sobreNome'}" id="input_last_name" />
+								<Input placeholder="Sobrenome" value="{path: 'oModelJsonAluno>/dados/sobreNome'}" id="input_last_name"/>
 								<Label text="Data de Nascimento" labelFor="dpNascimento"/>
-								<DatePicker
-									id="dpNascimento"
-									placeholder="Entre com a data"
-									change="handleChange"
-									value="{path:'oModelJsonAluno>/dados/nascimento', type:'sap.ui.model.type.Date', pattern:'dd/MM/yyyy', source:{ pattern: 'yyyy-MM-ddTHHmmss'}}"
-									valueFormat="dd/MM/yyyy"
-									displayFormat="long"
-									class="sapUiSmallMarginBottom"/>
+								<DatePicker id="dpNascimento" placeholder="Entre com a data" change="handleChange" value="{path:'oModelJsonAluno>/dados/nascimento', type:'sap.ui.model.type.Date', pattern:'dd/MM/yyyy', source:{ pattern: 'yyyy-MM-ddTHHmmss'}}" valueFormat="dd/MM/yyyy" displayFormat="long" class="sapUiSmallMarginBottom"/>
 								<core:Title text="{i18n>skillTitle}"/>
 								<Label text="Habilidades"/>
-								<MultiComboBox
-									id="cmbSkills"
-									selectionChange="handleSelectionChange"
-									selectionFinish="handleSelectionFinish"
-									items="{path: '/Skills', sorter: { path: 'Name' }}">
+								<MultiComboBox id="cmbSkills" selectionChange="handleSelectionChange" selectionFinish="handleSelectionFinish" items="{path: '/Skills', sorter: { path: 'Name' }}">
 									<core:Item key="{Id}" text="{Name}"/>
 								</MultiComboBox>
 								
 							</form:content>
 						</form:SimpleForm>
+						
+						<SearchField placeholder="Pesquise pelo primeiro nome " id="idsearch" search="onSearch" showRefreshButton="{= !${device>/support/touch} }" />
 						<List noDataText="{i18n>noDataText}" id="lstAluno" itemPress="selecionaAluno" selectionChange="selecionaAluno" items="{/Students}" mode="SingleSelect">
 							<items>
-								<StandardListItem 
-									title="{FirstName} {LastName}" 
-									description="{i18n>birthText} {path: 'BirthDate',formatter: '.formatDateDisplay'}" 
-									
-									icon="sap-icon://person-placeholder" type="Active"/>
+								<StandardListItem title="{FirstName} {LastName}" description="{i18n>birthText} {path: 'BirthDate',formatter: '.formatDateDisplay'}" icon="sap-icon://person-placeholder" type="Active"/>
 							</items>
 						</List>
 						

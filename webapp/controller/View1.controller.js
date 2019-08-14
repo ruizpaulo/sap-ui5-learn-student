@@ -4,8 +4,10 @@ sap.ui.define([
 	"sap/ui/model/json/JSONModel",
 	"sap/ui/model/odata/v2/ODataModel",
 	"sap/m/MessageBox",
-	"sap/m/BusyDialog"
-], function (Controller, MessageToast, JSONModel, ODataModel,MessageBox,BusyDialog) {
+	"sap/m/BusyDialog",
+	"sap/ui/model/Filter",
+	"sap/ui/model/FilterOperator"
+], function (Controller, MessageToast, JSONModel, ODataModel,MessageBox,BusyDialog, Filter, FilterOperator) {
 	"use strict";
 
 	return Controller.extend("pruiz.student_76.controller.View1", {
@@ -27,7 +29,7 @@ sap.ui.define([
 		},
 	
 		formatDate:function(date){
-			var dateFormat = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-ddTHH:mm:ss" });
+			var dateFormat = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-ddTHHmmss" });
 			var TZOffsetMs = new Date(0).getTimezoneOffset()*60*1000;
 			// format date and time to strings offsetting to GMT
 			var dateStr = dateFormat.format(new Date(date.getTime() + TZOffsetMs));
@@ -216,7 +218,7 @@ sap.ui.define([
 			a.open();
 			a.setBusy(true);
 			
-			var sPath =oListItemContext.getPath() + "/ToStudentSkills";
+			var sPath = oListItemContext.getPath() + "/ToStudentSkills";
 			var mParameters = {
 				success: function (oData) {
 					var StutendSkills = new Array();
@@ -236,6 +238,24 @@ sap.ui.define([
 			};
 			var oDataModel = this.getView().getModel();
 			oDataModel.read(sPath,mParameters);
-		}
+		},
+		onSearch : function (oEvent) {
+					//Create filters
+					var query = oEvent.getParameter("query");
+					if (query && query.length > 0) {
+						var oFilter = new Filter({
+									    filters: [
+									    	new Filter({path: 'FirstName',operator: FilterOperator.Contains,value1: query}),
+									    	new Filter({path: 'LastName',operator: FilterOperator.Contains,value1: query})
+									    		],
+									    		and: false
+									  })
+					}
+				
+					// update list binding
+					var list = this.getView().byId("lstAluno");
+					var binding = list.getBinding("items");
+					binding.filter(oFilter);
+			}
 	});
 });
