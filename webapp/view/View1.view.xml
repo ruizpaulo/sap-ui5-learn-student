@@ -21,7 +21,7 @@
 							</form:content>
 						</form:SimpleForm>
 						
-						<SearchField placeholder="Pesquise pelo primeiro nome " id="idsearch" search="onSearch" showRefreshButton="{= !${device>/support/touch} }" />
+						<SearchField placeholder="Pesquise pelo Nome ou Sobrenome" id="idsearch" search="onSearch" showRefreshButton="{= !${device>/support/touch} }" />
 						<List noDataText="{i18n>noDataText}" id="lstAluno" itemPress="selecionaAluno" selectionChange="selecionaAluno" items="{/Students}" mode="SingleSelect">
 							<items>
 								<StandardListItem title="{FirstName} {LastName}" description="{i18n>birthText} {path: 'BirthDate',formatter: '.formatDateDisplay'}" icon="sap-icon://person-placeholder" type="Active"/>
